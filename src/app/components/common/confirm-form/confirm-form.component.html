@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{data?.title}}</h1>
+
+<div mat-dialog-content>
+    <p>{{data?.message}}</p>
+</div>
+
+
+<div mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end space-between">
+    <div>
+        <button mat-raised-button (click)="onDismiss()">Cancel</button>
+        <button mat-raised-button (click)="onConfirm()">Delete</button>
+    </div>
+</div>

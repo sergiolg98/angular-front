@@ -1,0 +1,32 @@
+
+
+.mat-card{
+  overflow: hidden;
+}
+
+.button-row button{
+  margin-right: 8px; 
+}
+.user-name{
+  padding: 0 12px;
+  font-weight: 400;
+}
+
+.bg-credit-card {
+  padding: .5em;
+  margin: .5em;
+}
+
+.category {
+  margin: 5px;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+

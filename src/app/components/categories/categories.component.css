@@ -1,0 +1,12 @@
+.mat-toolbar-row, .mat-toolbar-single-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.table-header {
+  background-color: #f0f0f0;
+}

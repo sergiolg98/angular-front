@@ -1,0 +1,42 @@
+<mat-toolbar color="primary"class="example-header"> 
+  <button mat-icon-button class="example-icon" 
+          aria-label="Example icon-button with menu icon" 
+          (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+  </button>
+  <span>Note Manager Challenge</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" matTooltip="About this project." (click)="openInfo()">
+      <mat-icon>info</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+<mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+             [fixedInViewport]="false" [fixedTopGap]="0"
+             [fixedBottomGap]="0">
+             <mat-list role="list">
+              <a mat-list-item [routerLink]="['/notes']">
+                <div fxLayout="row" fxLayoutAlign="start center" >
+                  <mat-icon>menu_book</mat-icon>
+                  <span style="margin-left: 5px;">Notes</span>
+                </div>
+              </a>
+              <a mat-list-item [routerLink]="['/categories']">
+                <div fxLayout="row" fxLayoutAlign="start center" >
+                  <mat-icon>category</mat-icon>
+                  <span style="margin-left: 5px;">Categories</span>
+                </div>
+              </a>
+            </mat-list>
+</mat-sidenav>
+
+<mat-sidenav-content>
+  <router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<mat-toolbar class="footer">
+  <span class="footer-text">Note Manager Challenge 2024 @ Sergio Laureano for <i>Ensolvers</i></span>
+</mat-toolbar>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

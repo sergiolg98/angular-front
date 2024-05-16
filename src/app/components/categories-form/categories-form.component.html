@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{context}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" autocomplete="off">
+    <div mat-dialog-content>
+      <div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" placeholder="Description">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end space-between">
+  <div>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button (click)="submit()" cdkFocusInitial>Save</button>
+  </div>
+</div>

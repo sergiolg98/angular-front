@@ -1,0 +1,93 @@
+<mat-card style="margin: 1em 1em 0em 1em">
+    <mat-toolbar>
+        <span>Notes</span>
+        <span class="spacer"></span>
+        <button mat-raised-button color="primary" (click)="openDialog(null)">
+            <mat-icon>add</mat-icon> Add New
+        </button>
+    </mat-toolbar>
+</mat-card>
+<br>
+
+<mat-card style="margin: 1em 1em 0em 1em">
+    <mat-toolbar>
+        <span>
+            <mat-form-field appearance="outline">
+                <mat-label>Filters</mat-label>
+                <mat-select (selectionChange)="selectFilter($event.value)" [value]="filterDefault">
+                    <mat-option value="by_state">State</mat-option>
+                    <mat-option value="by_categories">Categories</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </span>
+        <span style="margin: .4em;" *ngIf="isFilterStateVisible">
+            <mat-form-field appearance="outline" >
+                <mat-label>State</mat-label>
+                <mat-select (selectionChange)="onStateSelect($event.value)" [value]="filterByStateDefault">
+                    <mat-option value="all">All</mat-option>
+                    <mat-option value="active">Active</mat-option>
+                    <mat-option value="archived">Archived</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </span>
+        <span style="margin: .4em;" *ngIf="isFilterCategoriesVisible">
+            <mat-form-field appearance="outline">
+                <mat-select multiple (selectionChange)="onCategorySelect($event.value)">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </span>
+        <span class="spacer"></span>
+    </mat-toolbar>
+</mat-card>
+<br>
+
+
+
+<div fxLayout="row wrap" style="margin: 1em 1em 0em 1em">
+    <div *ngFor="let item of notes" fxFlex="100" fxFlex.gt-md="33.3" fxFlex.md="50">
+        <mat-card class="bg-credit-card">
+            <mat-toolbar>
+                <mat-icon *ngIf="item.active" color="primary">check_circle</mat-icon>
+                <mat-icon *ngIf="!item.active">visibility_off</mat-icon>
+                <span style="margin-left: 5px;">Note #{{item.id}}</span>
+                <span class="spacer"></span>
+                <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </mat-toolbar>
+            
+            <mat-menu #menu="matMenu" xPosition="before" overlapTrigger="true">
+                <span (mouseleave)="menuTrigger.closeMenu()">
+                    <button mat-menu-item (click)="openDialog(item)">
+                        <mat-icon>edit_note</mat-icon>
+                        <span>Edit note</span>
+                    </button>
+                    <button mat-menu-item (click)="remove(item)">
+                        <mat-icon color="warn">delete</mat-icon>
+                        <span>Delete note</span>
+                    </button>
+                </span>
+            </mat-menu>
+            <br>
+            <mat-card-content>
+                <div fxFlex="100" fxLayout="column">
+                    <p fxLayout="row" fxLayoutAlign="start center" style="text-align: justify;">
+                        <span>{{item.content}}</span>
+                    </p>
+                </div>
+
+            </mat-card-content>
+            <mat-card-actions>
+                <div fxLayout="row wrap">
+                    <mat-chip *ngFor="let relation of item.categoriesIncludes" class="category" >
+                        {{relation.category.name}}
+                    </mat-chip>
+                </div>
+                
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
