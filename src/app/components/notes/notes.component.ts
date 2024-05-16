@@ -40,7 +40,6 @@ export class NotesComponent {
 
   loadData() {
     this.noteService.getAllActive().subscribe((res: any) => {
-      console.log('PINTO>>>> ', res.data)
       this.notes = res.data;
     });
   }
@@ -60,7 +59,6 @@ export class NotesComponent {
     });
 
     dialogRef.afterClosed().subscribe((response: any) => {
-      console.log('Se recibe: >>>', response);
       this.loadData();
       this.notificationService.showSimpleMessage('Action completed.', 'Close');
     });
@@ -126,9 +124,7 @@ export class NotesComponent {
   }
 
   onCategorySelect(data: number[]): void {
-    console.log('Selection: ', data);
     this.noteService.filterByCategories(data).subscribe((res: any) => {
-      console.log('Receiving this: ', res.data);
       this.notes = res.data;
     });
   }

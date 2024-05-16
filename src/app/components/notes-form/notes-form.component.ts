@@ -36,7 +36,6 @@ export class NotesFormComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.context = 'Create Note';
     if (this.data)
       this.context = 'Update Note';

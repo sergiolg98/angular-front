@@ -28,7 +28,6 @@ export class CategoriesFormComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.context = 'Create Category';
     if (this.data)
       this.context = 'Update Category';
@@ -45,7 +44,6 @@ export class CategoriesFormComponent {
   }
 
   submit() {
-    console.log('>>SENDING THIS: ', this.form.value)
     if (this.form.valid) {
       if (this.data) {
         this.categoryService.update(

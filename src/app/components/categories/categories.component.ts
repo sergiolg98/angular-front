@@ -52,7 +52,6 @@ export class CategoriesComponent {
         this.notificationService.showSimpleMessage('Action completed.', 'Close')
         this.loadData();
       }
-      console.log(response);
     });
   }
 
